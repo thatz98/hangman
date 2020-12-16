@@ -14,3 +14,10 @@ print("""
 """)
 
 hangman()
+
+choice = input("Play Again (P) or Quit Game (Q or Any) : ")
+
+if choice.upper() == "P":
+    hangman()
+else:
+    exit(1)

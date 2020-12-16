@@ -39,7 +39,18 @@ def hangman():
             print(f"Used letters are: {used_str}\n")
 
             if len(letter_set) == 0:
-                print("")
+                print("""                                                                    
+
+██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗ ██████╗ ███╗   ██╗
+╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██╔═══██╗████╗  ██║
+ ╚████╔╝ ██║   ██║██║   ██║    ██║ █╗ ██║██║   ██║██╔██╗ ██║
+  ╚██╔╝  ██║   ██║██║   ██║    ██║███╗██║██║   ██║██║╚██╗██║
+   ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝╚██████╔╝██║ ╚████║
+   ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═══╝
+                                                          
+""")
+                print(f"The word is : {current_word}\n")
+                return
         else:
             print("Incorrect guess! Try again")
             used_letters.add(input_letter)
@@ -49,13 +60,8 @@ def hangman():
             print(f"User letters are: {used_str}\n")
             if incorrect_count == 6:
                 print("Sorry, you are dead!!!\n")
-
-                choice = input("Play Again (P) or Quit Game (Q or Any) : ")
-
-                if choice.upper() == "P":
-                    hangman()
-                else:
-                    exit(1)
+                print(f"The word is : {current_word}\n")
+                return
 
 
 # function to return key for any value
