@@ -52,7 +52,7 @@ def hangman():
            ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═══╝
 
         """)
-                print(f"\tThe word is : {current_word}\n")
+                print(f"\tThe word is : {word}\n")
                 return
         else:
             print("\tIncorrect guess! Try again")
@@ -63,7 +63,7 @@ def hangman():
             print(f"\tUser letters are: {used_str}\n")
             if incorrect_count == 6:
                 print("\tSorry, you are dead!!!\n")
-                print(f"\tThe word is : {current_word}\n")
+                print(f"\tThe word is : {word}\n")
                 return
 
 
