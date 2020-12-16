@@ -22,13 +22,16 @@ def hangman():
     current_word = ' '.join(current_letters)
 
     while incorrect_count < 6 or len(letter_set) != 0:
-        print(f"Guess the word : {current_word}\n")
-        input_letter = input('Guess a letter : ').upper()
+        print(f"\tGuess the word : {current_word}\n")
+        input_letter = input('\tGuess a letter : ').upper()
+        if input_letter not in alphabet:
+            print("\tInvalid input! Enter again.\n")
+            continue
         if input_letter in used_letters:
-            print('Already guessed that letter! try something else\n')
+            print('\tAlready guessed that letter! try something else\n')
         elif input_letter in letter_set:
             matching_list = get_keys(word_letters, [input_letter])
-            print("Correct! It's there...")
+            print("\tCorrect! It's there...\n")
             for key in matching_list:
                 current_letters[key] = ''.join(word_letters[key])
 
@@ -36,31 +39,31 @@ def hangman():
             used_letters.add(input_letter)
             letter_set.remove(input_letter)
             used_str = " , ".join(used_letters)
-            print(f"Used letters are: {used_str}\n")
+            print(f"\tUsed letters are: {used_str}\n")
 
             if len(letter_set) == 0:
                 print("""                                                                    
 
-██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗ ██████╗ ███╗   ██╗
-╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██╔═══██╗████╗  ██║
- ╚████╔╝ ██║   ██║██║   ██║    ██║ █╗ ██║██║   ██║██╔██╗ ██║
-  ╚██╔╝  ██║   ██║██║   ██║    ██║███╗██║██║   ██║██║╚██╗██║
-   ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝╚██████╔╝██║ ╚████║
-   ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═══╝
-                                                          
-""")
-                print(f"The word is : {current_word}\n")
+        ██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗ ██████╗ ███╗   ██╗
+        ╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██╔═══██╗████╗  ██║
+         ╚████╔╝ ██║   ██║██║   ██║    ██║ █╗ ██║██║   ██║██╔██╗ ██║
+          ╚██╔╝  ██║   ██║██║   ██║    ██║███╗██║██║   ██║██║╚██╗██║
+           ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝╚██████╔╝██║ ╚████║
+           ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═══╝
+
+        """)
+                print(f"\tThe word is : {current_word}\n")
                 return
         else:
-            print("Incorrect guess! Try again")
+            print("\tIncorrect guess! Try again")
             used_letters.add(input_letter)
             incorrect_count += 1
             draw_man(incorrect_count)
             used_str = " , ".join(used_letters)
-            print(f"User letters are: {used_str}\n")
+            print(f"\tUser letters are: {used_str}\n")
             if incorrect_count == 6:
-                print("Sorry, you are dead!!!\n")
-                print(f"The word is : {current_word}\n")
+                print("\tSorry, you are dead!!!\n")
+                print(f"\tThe word is : {current_word}\n")
                 return
 
 
